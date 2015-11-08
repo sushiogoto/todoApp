@@ -3,14 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>To Do List</title>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/underscore/underscore-min.js"></script>
   <script src="bower_components/backbone/backbone.js"></script>
-  <script src="scripts/app.js"></script>
+
+  <script src="data/data.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="models/ToDoModel.js"></script>
+  <script src="collections/ToDos.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/ToDoEntryView.js"></script>
+  <script src="views/ToDoListView.js"></script>
 </head>
 <body>
   <div id="main">
-    <h1>to do list</h1>
+    <form action="demo_form.asp">
+      New to do: <input type="text" name="todoitem"><br>
+      <input type="submit" value="Submit">
+    </form>
   </div>
+  <script>
+    var toDoList = new ToDos(toDoData);
+    var app = new AppModel({ toDoList: toDoList });
+
+    var appView = new AppView({ el: $('#main'), model: app });
+
+  </script>
 </body>
 </html>
