@@ -8,7 +8,10 @@ var AppView = Backbone.View.extend({
   },
 
   events: {
-
+    'submit': function(params) {
+      console.log(params);
+      this.toDoListView.collection.on('');
+    }
   },
 
   render: function () {
