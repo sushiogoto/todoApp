@@ -8,10 +8,36 @@ var AppView = Backbone.View.extend({
   },
 
   events: {
-    'submit': function(params) {
-      console.log(params);
-      this.toDoListView.collection.on('');
-    }
+    'submit #send': 'handleSubmit'
+
+    // function() {
+    //   var item = $('#item').val();
+    //   // this.toDoListView.collection.on('');
+    //   debugger;
+    //   this.toDoListView.collection({
+    //       beforeSend: function (xhr) {
+    //         xhr.setRequestHeader('Content-Type', 'application/json');
+    //       },
+
+    //       data: JSON.stringify({item: item}),
+
+    //       type: 'POST',
+
+    //       success: function (data) {
+    //         // self.render();
+    //       }
+    //   });
+    // }
+  },
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+
+    var $item = this.$('#item');
+    this.toDoListView.collection.create({
+      item: $item.val()
+    });
+    $item.val('');
   },
 
   render: function () {

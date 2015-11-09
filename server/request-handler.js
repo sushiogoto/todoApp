@@ -19,7 +19,7 @@ var actions = {
   'POST': function(request, response) {
     helpers.collectData(request, function (data) {
       ToDoItems.create({
-        item: data.item
+        item: data
       })
       .then(function(newItem) {
         res.send(200, newItem);
